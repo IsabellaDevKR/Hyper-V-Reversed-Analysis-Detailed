@@ -37,9 +37,7 @@
 	- 7.3. Load script
 	- 7.4. Usage with Secure Boot
 	- 7.5. Usage with TPM
-8. Source code
-9. Tested Windows versions
-10. Credits
+
 
 # 1. Introduction
 hyper-reV is [memory introspection](https://hvmi.readthedocs.io/en/latest/chapters/1-overview.html) and reverse engineering [hypervisor](https://www.redhat.com/en/topics/virtualization/what-is-a-hypervisor) powered by leveraging [Hyper-V](https://en.wikipedia.org/wiki/Hyper-V). There is also a usermode component The project provides the following abilities for the guest - meaning the Windows operating system virtualized by Hyper-V - to: read and write to guest [virtual memory](https://wiki.osdev.org/Memory_management#Virtual_Address_Space) and [physical memory](https://wiki.osdev.org/Memory_management#Physical_Address_Space), translate guest virtual addresses to their corresponding guest physical addresses, [SLAT](https://en.wikipedia.org/wiki/Second_Level_Address_Translation) code hooks (also known as EPT/NPT hooks), and hiding entire pages of physical memory from the guest. The fact that it leverages Hyper-V means that it will also work under systems protected by [HVCI](https://learn.microsoft.com/en-us/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity?tabs=security).
