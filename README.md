@@ -120,7 +120,7 @@ Some processes cannot be done in the first VM exit (especially ones relating to 
 ## 4.4. APIC
 At the first VM exit, basic information of [APIC](https://wiki.osdev.org/APIC) is fetched through the 'APIC base' located at the [MSR](https://wiki.osdev.org/Model_Specific_Registers) 0x1B. If APIC is already enabled, then it is checked whether xAPIC or x2APIC is used. If APIC is not already enabled, then the highest possible version of APIC is enabled. For xAPIC, the ICR (interrupt command register) can be accessed through its host physical address at the [Local APIC](https://wiki.osdev.org/APIC#Local_APIC_configuration). For x2APIC, the ICR is accessed through the MSRs representing the Local APIC.
 
-Through the ICR, commands can be sent to the Local APIC. This is later used to send Non Maskable Interrupts to all processors but the currently executing one by formulating an ICR request. Later on in the post, it is described how those NMIs are used for synchronizing SLAT code hooks (EPT/NPT hooks). The APIC library which was internally developed for this project and released separately [can be found here](https://github.com/noahware/APIC).
+Through the ICR, commands can be sent to the Local APIC. This is later used to send Non Maskable Interrupts to all processors but the currently executing one by formulating an ICR request. Later on in the post, it is described how those NMIs are used for synchronizing SLAT code hooks (EPT/NPT hooks).
 
 ## 4.5. SLAT
 A SLAT CR3 is a CR3 which describes SLAT/translations of guest physical memory to host physical memory. On AMD this is called a nested CR3. On Intel this is called an [EPT](https://en.wikipedia.org/wiki/Second_Level_Address_Translation#Extended_Page_Tables) pointer.
