@@ -170,9 +170,7 @@ When the hooked page is executed under the Hyper-V SLAT CR3, a nested page fault
 
 Once execution reaches a non-hooked page when under the hook SLAT CR3 (signalled by a nested page fault caused by execution of any non-hooked page), the current core's SLAT CR3 is reverted to the Hyper-V SLAT CR3 and execution can continue as normal until a hooked page is executed again.
 
-When a page is hooked, the page before and after the target page are set to be executable in the hook SLAT CR3. This prevents issues where there are instructions split over the page boundary of a hooked page (as suggested by @papstuc).
-
-To get the [VMCB](https://blog.back.engineering/04/08/2022/#virtual-machine-control-block-vmcb---parts), @Iraq1337 gave example code of how he does it and the setting up of the hook SLAT CR3. He also explained the logic behind NPT hooks.
+When a page is hooked, the page before and after the target page are set to be executable in the hook SLAT CR3. This prevents issues where there are instructions split over the page boundary of a hooked page
 
 ## 4.5.3. Code hook features common to both AMD and Intel
 
