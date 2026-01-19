@@ -180,7 +180,7 @@ If a large page has to be split ([PDe or PDPTe](https://wiki.osdev.org/Page_Tabl
 This is done to save some heap memory that was used to allocate those lower paging structures and it also improves SLAT performance. The hook_entry_t linked list structure which is used to describe a SLAT code hook fits in just 16 bytes, allowing 256 EPT/NPT hooks to be described in just 4kB.
 
 ## 4.5.3.2. Synchronization using NMIs
-APIC is used to send NMIs to all host logical processors to invalidate SLAT caches. This is paired with a bitmap signaling what logical processors need to invalidate their caches. This was done as there was an issue with synchronization of hooks (where @papstuc suggested to synchronize the SLAT caches). Once a logical processor receives the NMI, the following will happen depending on if the processor was in host or guest state:
+APIC is used to send NMIs to all host logical processors to invalidate SLAT caches. This is paired with a bitmap signaling what logical processors need to invalidate their caches. This was done as there was an issue with synchronization of hooks. Once a logical processor receives the NMI, the following will happen depending on if the processor was in host or guest state:
 
 ## 4.5.3.2.1. NMIs in host state
 If the processor was in host state when the NMI hit the processor, it will be delivered to the handler described in the IDT of the host. In the interrupt entry, [all general purpose and XMM registers](https://wiki.osdev.org/CPU_Registers_x86-64) are saved on the stack before calling the NMI processor function. The NMI processor function clears the SLAT cache if it was signaled to be cleared in the bitmap.
